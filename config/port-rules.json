@@ -1,0 +1,10 @@
+{
+  "states": ["DRAFT", "VERIFYING", "APPROVED", "DEPARTED", "ARRIVED", "CLOSED"],
+  "recheckFields": ["passengers", "destinationPort"],
+  "berthHoldMinutes": 30,
+  "documentVisibility": {
+    "operator": "masked",
+    "borderControl": "full"
+  }
+}
+
