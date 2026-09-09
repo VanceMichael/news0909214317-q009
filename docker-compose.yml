@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/voyage
+      DATABASE_USER: voyage
+      DATABASE_PASSWORD: voyage
+    ports: ["8080:8080"]
+    depends_on:
+      db: {condition: service_healthy}
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: voyage
+      POSTGRES_USER: voyage
+      POSTGRES_PASSWORD: voyage
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U voyage"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
